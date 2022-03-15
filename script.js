@@ -6,7 +6,23 @@
 // @description  Auto Twitch.tv channel point clicker
 // @author       Ortiz, Peter 
 // @match        https://www.twitch.tv/*
-// @updateURL    
+// @website      https://pjortiz.github.io/Auto-Twitch-Channel-Point-Clicker/
+// @updateURL    https://pjortiz.github.io/Auto-Twitch-Channel-Point-Clicker/script.js
 // @run-at       document-end
 // @grant        none
 // ==/UserScript==
+
+const query = "button [aria-label^='Claim Bonus']";
+
+function callback(mutationList) {
+  mutationList.forEach(function(mutation) {
+    let claimButton = document.querySelector(query);
+    if(claimButton) {
+      claimButton.click();
+      console.log('Points Auto Claimed');
+    }
+  });
+}
+
+var observer = new MutationObserver(callback);
+observer.observe(document.body, {childList: true, subtree: true});
