@@ -28,8 +28,10 @@ function callback(mutationList) {
 }
 
 let observer = new MutationObserver(callback);
-let container = document.querySelector(containerQuery);
+let container;
 
-if (container) {
-  observer.observe(container, {childList: true, subtree: true});
+while(document.readyState !== 'complete' && (container = document.querySelector(containerQuery))) {
+  console.log('Document not ready');
 }
+
+observer.observe(container, {childList: true, subtree: true});
