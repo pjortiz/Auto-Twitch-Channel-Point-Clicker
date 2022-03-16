@@ -30,7 +30,7 @@ function callback(mutationList) {
 let observer = new MutationObserver(callback);
 let container;
 
-while(document.readyState !== 'complete' && (container = document.querySelector(containerQuery))) {
+while(document.readyState !== 'complete' && !(container = document.querySelector(containerQuery))) {
   console.log('Document not ready');
 }
 
