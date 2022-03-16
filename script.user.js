@@ -13,11 +13,11 @@
 // @grant        none
 // ==/UserScript==
 
-const query = "button [aria-label^='Claim Bonus']";
+const claimButtonQuery = "button [aria-label^='Claim Bonus']";
 
 function callback(mutationList) {
   mutationList.forEach(function(mutation) {
-    let claimButton = document.querySelector(query);
+    let claimButton = document.querySelector(claimButtonQuery);
     if(claimButton) {
       claimButton.click();
       console.log('Points Auto Claimed');
