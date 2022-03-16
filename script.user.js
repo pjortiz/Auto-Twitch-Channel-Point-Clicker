@@ -15,23 +15,49 @@
 const containerQuery = ".chat-input__buttons-container"
 const claimButtonQuery = "[aria-label^='Claim Bonus']";
 
-function callback(mutationList) {
-  mutationList.forEach(function(mutation) {
-    let claimButton = mutation.target.querySelector(claimButtonQuery);
-    if(claimButton) {
-      claimButton.click();
-      console.log('Points Auto Claimed!');
-    } else {
-      console.log('No points to be claimed.');
-    }
+function getContainer(document, query) {
+  return new Promise(resolve => {
+    setTimeout((d, q) => {
+      try {
+        while(d.readyState !== 'complete' && !(d.querySelector(q))) {
+          console.log('Document not ready');
+        }
+        resolve(d.querySelector(q))
+      }	catch (error) {
+        console.error(error);
+      }
+    }, 2000, document, query);
   });
 }
 
-let observer = new MutationObserver(callback);
-let container;
 
-while(document.readyState !== 'complete' && !(container = document.querySelector(containerQuery))) {
-  console.log('Document not ready');
+async function initObserver() {  
+  try {  
+    
+    function callback(mutationList) {
+      mutationList.forEach(function(mutation) {
+        let claimButton = mutation.target.querySelector(claimButtonQuery);
+        if(claimButton) {
+          claimButton.click();
+          console.log('Points Auto Claimed!');
+        } else {
+          //console.log('No points to be claimed.');
+        }
+      });
+    }
+
+    let observer = new MutationObserver(callback);
+    let container = await getContainer(document, containerQuery);
+		
+    
+    observer.observe(container, {childList: true, subtree: true});
+    
+    console.log('Auto-Twitch-Channel-Point-Clicker loaded!');
+  } catch (error) {
+    console.log('Auto-Twitch-Channel-Point-Clicker failed to load!');
+    console.error(error);
+  }
+  
 }
 
-observer.observe(container, {childList: true, subtree: true});
+initObserver();
