@@ -13,17 +13,24 @@
 // @grant        none
 // ==/UserScript==
 
+const containerQuery = ".chat-input__buttons-container"
 const claimButtonQuery = "[aria-label^='Claim Bonus']";
 
 function callback(mutationList) {
   mutationList.forEach(function(mutation) {
-    let claimButton = document.querySelector(claimButtonQuery);
+    let claimButton = mutation.target.querySelector(claimButtonQuery);
     if(claimButton) {
       claimButton.click();
-      console.log('Points Auto Claimed');
+      console.log('Points Auto Claimed!');
+    } else {
+      console.log('No points to be claimed.');
     }
   });
 }
 
-var observer = new MutationObserver(callback);
-observer.observe(document.body, {childList: true, subtree: true});
+let observer = new MutationObserver(callback);
+let container = document.querySelector(containerQuery);
+
+if (container) {
+  observer.observe(container, {childList: true, subtree: true});
+}
