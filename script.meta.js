@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Auto-Twitch-Channel-Point-Clicker
-// @namespace    http://tampermonkey.net/
+// @namespace    https://pjortiz.github.io
 // @version      0.4
 // @icon         https://i.imgur.com/Jks7wvm.png
 // @description  Auto Twitch.tv channel point clicker
