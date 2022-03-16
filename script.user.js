@@ -7,7 +7,7 @@
 // @author       Ortiz, Peter 
 // @match        https://www.twitch.tv/*
 // @website      https://pjortiz.github.io/Auto-Twitch-Channel-Point-Clicker/
-// @updateURL    https://pjortiz.github.io/Auto-Twitch-Channel-Point-Clicker/script.user.js
+// @updateURL    https://pjortiz.github.io/Auto-Twitch-Channel-Point-Clicker/script.meta.js
 // @run-at       document-end
 // @grant        none
 // ==/UserScript==
