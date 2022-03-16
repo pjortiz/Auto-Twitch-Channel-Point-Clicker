@@ -13,7 +13,7 @@
 // @grant        none
 // ==/UserScript==
 
-const claimButtonQuery = "button [aria-label^='Claim Bonus']";
+const claimButtonQuery = "[aria-label^='Claim Bonus']";
 
 function callback(mutationList) {
   mutationList.forEach(function(mutation) {
