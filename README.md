@@ -5,4 +5,4 @@
 ### Step 2 Install Script: [Click To Install](https://pjortiz.github.io/Auto-Twitch-Channel-Point-Clicker/script.user.js)
 
 # Uninstall
-Delete plug-in Tampermonkey or delete script from Tampermonkey dashboard.
+Delete plug-in or delete script from Tampermonkey/Greasemonkey plug-in.
